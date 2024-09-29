@@ -95,7 +95,27 @@
   <button onclick="unmuteVideo()">Unmute Video</button>
 </div>
 
+<style>
 
+.button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+  /* Button Styling */
+  .button-container button {
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: opacity 0.5s ease, transform 0.3s ease;
+  }
+</style>
 <!-- <video id="background-video" controls>
   <source src="sanket_song.mp4" type="video/mp4">
   <source src="sanket_song.mp4" type="video/webm">
@@ -111,5 +131,18 @@
           </p>
 </div>
 
+<script>
+  function unmuteVideo() {
+      var video = document.getElementById('background-video');
+      video.muted = false;  // Unmute the video
+      video.play();  // Ensure the video plays after being unmuted
+
+      var button = document.querySelector('.button-container button');
+      button.style.opacity = '0';  // Fade out the button
+      setTimeout(function() {
+          button.style.display = 'none';  // Completely hide the button after fading out
+      }, 500);  // Time should match the CSS transition duration
+  }
+</script>
 </body>
 
